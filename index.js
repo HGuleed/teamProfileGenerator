@@ -3,6 +3,7 @@ const Manager = require("./lib/Manager");
 const Intern = require("./lib/Intern");
 const Engineer = require("./lib/Engineer");
 const fs = require("fs");
+const generateHTML = require("./generateHtml");
 const {
   managerQuest,
   intOrEng,
@@ -32,8 +33,14 @@ function addEmp() {
       // console.log("Yes add an employee");
       addIntOrEng();
     } else {
-      // fs.writeFile("./dist", generateHtml(data));
-      console.log("no dont add an employee");
+      fs.writeFile("./dist/index.html", generateHTML(), (err) => {
+        if (err) {
+          throw err;
+        } else {
+          console.log("Teams profile generated");
+        }
+      });
+      // console.log("no dont add an employee");
     }
   });
 }
