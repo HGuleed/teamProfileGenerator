@@ -12,7 +12,9 @@ const {
 } = require("./questionPrompts");
 
 let internArr = [];
+let engineerArr = [];
 let manager;
+
 function init() {
   inquirer.prompt(managerQuest).then((data) => {
     manager = new Manager(data.name, data.Id, data.email, data.officeNum);
@@ -48,12 +50,18 @@ function addIntOrEng() {
 
 function addIntern() {
   inquirer.prompt(internQuest).then((data) => {
-    console.log(data);
+    intern = new Intern(data.name, data.Id, data.email, data.school);
+    internArr.push(intern);
+    // console.log(data);
+    addEmp();
   });
 }
 function addEngineer() {
   inquirer.prompt(engineerQuest).then((data) => {
-    console.log(data);
+    // console.log(data);
+    engineer = new Engineer(data.name, data.Id, data.email, data.github);
+    engineerArr.push(engineer);
+    addEmp();
   });
 }
 init();
