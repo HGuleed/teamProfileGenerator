@@ -33,13 +33,18 @@ function addEmp() {
       // console.log("Yes add an employee");
       addIntOrEng();
     } else {
-      fs.writeFile("./dist/index.html", generateHTML(), (err) => {
-        if (err) {
-          throw err;
-        } else {
-          console.log("Teams profile generated");
+      fs.writeFile(
+        "./dist/index.html",
+        generateHTML(manager, engineerArr, internArr),
+        (err) => {
+          console.log(manager, internArr);
+          if (err) {
+            throw err;
+          } else {
+            console.log("Teams profile generated");
+          }
         }
-      });
+      );
       // console.log("no dont add an employee");
     }
   });

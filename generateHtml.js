@@ -1,4 +1,4 @@
-function generateHTML() {
+function generateHTML(manager, engineer, intern) {
   return `<!DOCTYPE html>
     <html lang="en">
       <head>
@@ -16,9 +16,41 @@ function generateHTML() {
       </head>
       <body>
         <h1>My Team</h1>
+        <div class="container">
+            <div class="row">
+            ${createManager(manager)}
+            ${createIntern(intern)}
+            </div>
+        </div>
         
       </body>
     </html>`;
 }
-
+function createManager(manager) {
+  return `
+<div class="col">
+          <h2>${manager.getName()}</h2>
+          <h3>Manager</h3>
+          <ul>
+            <li>Id: <span>${manager.getID()}</span></li>
+            <li>Email: <span>${manager.getEmail()}</span></li>
+            <li>Office <span>${manager.officeNum}</span></li>
+          </ul>
+        </div>`;
+}
+function createIntern(internArr) {
+  internArr.map((intern) => {
+    return `
+        <div class="col">
+        <h2>${intern.getName()}</h2>
+        <h3>Intern</h3>
+        <ul>
+          <li>Id: <span>${intern.getID()}</span></li>
+          <li>Email: <span>${intern.getEmail()}</span></li>
+          <li>School: <span>${intern.school}</span></li>
+        </ul>
+      </div>`;
+  });
+}
+// function createEngineer()
 module.exports = generateHTML;
