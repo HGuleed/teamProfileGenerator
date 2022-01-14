@@ -1,88 +1,52 @@
 const inquirer = require("inquirer");
+const Manager = require("./lib/Manager");
+const Intern = require("./lib/Intern");
+const Engineer = require("./lib/Engineer");
 const fs = require("fs");
+const {
+  managerQuest,
+  intOrEng,
+  addEmployee,
+  engineerQuest,
+  internQuest,
+} = require("./questionPrompts");
 
-//Questions for manager
-const managerQuest = [
-  { type: "input", name: "name", message: "What is the managers name?" },
-  {
-    type: "input",
-    name: "Id",
-    message: "What is the manager's employee ID?",
-  },
-  {
-    type: "input",
-    name: "email",
-    message: "What is the manager's email?",
-  },
-  {
-    type: "input",
-    name: "officeNumber",
-    message: "What is the manager's office number?",
-  },
-];
-const internQuest = [
-  { type: "input", name: "name", message: "What is the intern's name?" },
-  {
-    type: "input",
-    name: "Id",
-    message: "What is the intern's employee Id?",
-  },
-  {
-    type: "input",
-    name: "email",
-    message: "What is the intern's email?",
-  },
-  {
-    type: "input",
-    name: "school",
-    message: "What school does the intern attend?",
-  },
-];
-const engineerQuest = [
-  { type: "input", name: "name", message: "What is the engineer's name?" },
-  {
-    type: "input",
-    name: "Id",
-    message: "What is the engineer's employee Id?",
-  },
-  {
-    type: "input",
-    name: "email",
-    message: "What is the engineer's email?",
-  },
-  {
-    type: "input",
-    name: "github",
-    message: "What is the engineer's github username?",
-  },
-];
-
-const addEmployee = {
-  type: "confirm",
-  name: "addEmployee",
-  message: "Would you like to add an employee?",
-};
-
-const intOrEng = {
-  type: "choices",
-  name: "intOrEng",
-  message: "Would you like to add an Intern or Engineer?",
-  choices: ["Intern", "Engineer"],
-};
-
+let internArr = [];
+let manager;
 function init() {
-  inquirer
-    .prompt(managerQuest)
-    .then((data) => {
-      const manager = new Manager(data.name, data.Id, data.email);
-    })
-    .prompt(addEmployee)
-    .then((data) => {
-      if (yes) {
-        inquirer.prompt(intOrEng);
-      } else {
-      }
-    });
+  inquirer.prompt(managerQuest).then((data) => {
+    manager = new Manager(data.name, data.Id, data.email, data.officeNum);
+
+    console.log(manager);
+
+    addEmp();
+  });
 }
 
-// function
+function addEmp() {
+  inquirer.prompt(addEmployee).then((data) => {
+    console.log(data);
+    if (data.addEmployee === true) {
+      console.log("Yes add an employee");
+      // addIntOrEng();
+    } else {
+      // fs.writeFile("./dist", generateHtml(data));
+      console.log("no dont add an employee");
+    }
+  });
+}
+
+//  function addIntOrEng(){
+//    inquirer.prompt(intOrEng).then((data)=>{
+//      if(data.intOrEng === "Intern"){
+
+//      }
+//    })
+//  }
+
+//  function addIntern(){
+//    inquirer.prompt(internQuest).then((data)=>{
+
+//    })
+//  }
+init();

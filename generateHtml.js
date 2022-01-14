@@ -1,6 +1,3 @@
-require()
+require();
 
-
-generateHtml(){
-    ``
-}
+generateIntern;
