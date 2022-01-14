@@ -25,10 +25,10 @@ function init() {
 
 function addEmp() {
   inquirer.prompt(addEmployee).then((data) => {
-    console.log(data);
-    if (data.addEmployee === true) {
-      console.log("Yes add an employee");
-      // addIntOrEng();
+    // console.log(data.addEmployee);
+    if (data.addEmployee) {
+      // console.log("Yes add an employee");
+      addIntOrEng();
     } else {
       // fs.writeFile("./dist", generateHtml(data));
       console.log("no dont add an employee");
@@ -36,17 +36,24 @@ function addEmp() {
   });
 }
 
-//  function addIntOrEng(){
-//    inquirer.prompt(intOrEng).then((data)=>{
-//      if(data.intOrEng === "Intern"){
+function addIntOrEng() {
+  inquirer.prompt(intOrEng).then((data) => {
+    if (data.intOrEng === "Intern") {
+      addIntern();
+    } else {
+      addEngineer();
+    }
+  });
+}
 
-//      }
-//    })
-//  }
-
-//  function addIntern(){
-//    inquirer.prompt(internQuest).then((data)=>{
-
-//    })
-//  }
+function addIntern() {
+  inquirer.prompt(internQuest).then((data) => {
+    console.log(data);
+  });
+}
+function addEngineer() {
+  inquirer.prompt(engineerQuest).then((data) => {
+    console.log(data);
+  });
+}
 init();

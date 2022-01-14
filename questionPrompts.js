@@ -61,7 +61,7 @@ const addEmployee = {
 };
 
 const intOrEng = {
-  type: "choices",
+  type: "list",
   name: "intOrEng",
   message: "Would you like to add an Intern or Engineer?",
   choices: ["Intern", "Engineer"],
