@@ -15,14 +15,35 @@ h1 {
   background-color: coral;
   height: 80px;
 }
-
-.row {
+div {
+  display: flex;
+}
+.rows {
   display: flex;
   flex-direction: row;
+  flex-wrap: nowrap;
 }
 .columns {
   display: flex;
-  border: 5px solid blue;
+  border: 3px solid chocolate;
   flex-direction: column;
   margin: 10px;
+  align-self: center;
+}
+.subheader {
+  display: flex;
+  flex-direction: column;
+  background-color: crimson;
+}
+ul {
+  background-color: lightsalmon;
+  margin: 0px;
+  height: 175px;
+}
+li {
+  margin: 0px;
+  border: 1px solid crimson;
+  background-color: tan;
+  list-style: none;
+  display: flex;
 }

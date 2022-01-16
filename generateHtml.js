@@ -33,9 +33,11 @@ function generateHTML(manager, engineerArr, internArr) {
 }
 function createManager(manager) {
   return `
-<div class="col">
-          <h2>${manager.getName()}</h2>
-          <h3>Manager</h3>
+        <div class="col, columns">
+          <div class="subheader">
+            <h2>${manager.getName()}</h2>
+            <h3>Manager</h3>
+          </div>
           <ul>
             <li>Id: <span>${manager.getID()}</span></li>
             <li>Email: <span>${manager.getEmail()}</span></li>
@@ -46,9 +48,13 @@ function createManager(manager) {
 function createIntern(internArr) {
   return internArr.map((internData) => {
     return `
-      <div class="col">
-      <h2>${internData.getName()}</h2>
-      <h3>InternData</h3>
+    <div>
+      <div class="col, columns">
+      <div class="col, columns">
+          <div class="subheader">
+            <h2>${internData.getName()}</h2>
+          <h3>Intern</h3>
+          </div>
       <ul>
         <li>Id: <span>${internData.getID()}</span></li>
         <li>Email: <span>${internData.getEmail()}</span></li>
@@ -60,9 +66,11 @@ function createIntern(internArr) {
 function createEngineer(engineerArr) {
   return engineerArr.map((engineerData) => {
     return `
-      <div class="col">
-      <h2>${engineerData.getName()}</h2>
-      <h3>engineerData</h3>
+      <div class="col, columns">
+      <div class="subheader">
+            <h2>${engineerData.getName()}</h2>
+          <h3>Engineer</h3>
+          </div>
       <ul>
         <li>Id: <span>${engineerData.getID()}</span></li>
         <li>Email: <span>${engineerData.getEmail()}</span></li>
