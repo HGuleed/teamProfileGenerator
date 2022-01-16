@@ -1,4 +1,7 @@
-function generateHTML(manager, engineer, intern) {
+function generateHTML(manager, engineerArr, internArr) {
+  // console.log(internArr);
+  // console.log(manager);
+  // console.log(engineerArr);
   return `<!DOCTYPE html>
     <html lang="en">
       <head>
@@ -11,7 +14,7 @@ function generateHTML(manager, engineer, intern) {
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
           crossorigin="anonymous"
         />
-        <link rel="stylesheet" href="./assets/styles/style.css" />
+        <link rel="stylesheet" href="./assets/style.css" />
         <title>Document</title>
       </head>
       <body>
@@ -19,7 +22,9 @@ function generateHTML(manager, engineer, intern) {
         <div class="container">
             <div class="row">
             ${createManager(manager)}
-            ${createIntern(intern)}
+            ${createEngineer(engineerArr)}
+            ${createIntern(internArr)}
+
             </div>
         </div>
         
@@ -39,18 +44,31 @@ function createManager(manager) {
         </div>`;
 }
 function createIntern(internArr) {
-  internArr.map((intern) => {
+  return internArr.map((internData) => {
     return `
-        <div class="col">
-        <h2>${intern.getName()}</h2>
-        <h3>Intern</h3>
-        <ul>
-          <li>Id: <span>${intern.getID()}</span></li>
-          <li>Email: <span>${intern.getEmail()}</span></li>
-          <li>School: <span>${intern.school}</span></li>
-        </ul>
-      </div>`;
+      <div class="col">
+      <h2>${internData.getName()}</h2>
+      <h3>InternData</h3>
+      <ul>
+        <li>Id: <span>${internData.getID()}</span></li>
+        <li>Email: <span>${internData.getEmail()}</span></li>
+        <li>School: <span>${internData.school}</span></li>
+      </ul>
+    </div>`;
   });
 }
-// function createEngineer()
+function createEngineer(engineerArr) {
+  return engineerArr.map((engineerData) => {
+    return `
+      <div class="col">
+      <h2>${engineerData.getName()}</h2>
+      <h3>engineerData</h3>
+      <ul>
+        <li>Id: <span>${engineerData.getID()}</span></li>
+        <li>Email: <span>${engineerData.getEmail()}</span></li>
+        <li>School: <span>${engineerData.github}</span></li>
+      </ul>
+    </div>`;
+  });
+}
 module.exports = generateHTML;

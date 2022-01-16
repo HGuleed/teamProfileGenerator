@@ -15,12 +15,15 @@ const {
 let internArr = [];
 let engineerArr = [];
 let manager;
+let intern;
+let enginer;
 
 function init() {
   inquirer.prompt(managerQuest).then((data) => {
+    console.log(data);
     manager = new Manager(data.name, data.Id, data.email, data.officeNum);
 
-    console.log(manager);
+    // console.log(manager);
 
     addEmp();
   });
@@ -33,11 +36,12 @@ function addEmp() {
       // console.log("Yes add an employee");
       addIntOrEng();
     } else {
+      // console.log(manager);
       fs.writeFile(
         "./dist/index.html",
         generateHTML(manager, engineerArr, internArr),
         (err) => {
-          console.log(manager, internArr);
+          // console.log(manager, internArr);
           if (err) {
             throw err;
           } else {
